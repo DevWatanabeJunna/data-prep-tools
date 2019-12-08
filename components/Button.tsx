@@ -2,6 +2,7 @@ import styled, { css, StyledComponent, FlattenSimpleInterpolation } from 'styled
 
 interface ButtonColor {
     color?: string
+    hovercolor?: string
 }
 
 const Default: FlattenSimpleInterpolation = css`
@@ -15,12 +16,9 @@ const Default: FlattenSimpleInterpolation = css`
 `
 
 const HighConcentration = 'ee'
-
-const MediumConcentration = 'aa'
-
 const LowConcentration = '56'
-
 const defaultColor = '#666666'
+const bluecolor = '#1299bb'
 
 export const Button: StyledComponent<'button', {}> = styled.button<ButtonColor>`
     ${Default}
@@ -32,7 +30,8 @@ export const Button: StyledComponent<'button', {}> = styled.button<ButtonColor>`
     border: 2px solid ${({ color = defaultColor }) => color + LowConcentration};
     transition: .3s;
     &:hover {
-        border: 2px solid ${({ color = defaultColor }) => color + MediumConcentration};
+        color: ${({ hovercolor = bluecolor }) => hovercolor};
+        border: 2px solid ${({ hovercolor = bluecolor }) => hovercolor + LowConcentration};
     }
 `
 
